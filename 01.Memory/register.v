@@ -7,7 +7,7 @@ module REG	#(parameter	BITWIDTH = 1) (
 	output	reg		[BITWIDTH-1 : 0]	Q
 );
 
-	always @ (posedge CLK)
+	always @ (posedge CLK)		// synchronous
 	begin 
 		if (RST)		Q <= 0; 
 		else if (EN)	Q <= D;
@@ -23,7 +23,7 @@ module LatchN #(parameter	BITWIDTH = 1) (
 );
 
 
-	always @ (CLK or D)
+	always @ (CLK or D)	// asynchronous
 	begin 
 		if (~CLK) Q <= D;
 	end
